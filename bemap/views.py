@@ -6,6 +6,18 @@ from rest_framework.response import Response
 from rest_framework import status
 
 @api_view(['GET'])
+def day_detail(request, id):
+
+    try:
+        event = Event.objects.get(day=id)
+    except Event.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = EventSerializer(event)
+        return Response(serializer.data)
+
+@api_view(['GET'])
 def event_list(request):
 
     if request.method == 'GET':

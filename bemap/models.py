@@ -5,7 +5,7 @@ class Event(models.Model):
     description = models.CharField(max_length=500)
     room = models.CharField(max_length=10)
     image = models.ImageField(max_length=100)
-    day = models.CharField(max_length=5)
+    day = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name
