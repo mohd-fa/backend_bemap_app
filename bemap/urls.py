@@ -21,6 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('events/', views.event_list),
     path('events/<int:id>', views.event_detail),
-    path('days/<inr:id>', views.day_detail)
+    path('days/<int:id>', views.day_detail)
 
 ]

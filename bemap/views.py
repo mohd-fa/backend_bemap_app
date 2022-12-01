@@ -9,13 +9,16 @@ from rest_framework import status
 def day_detail(request, id):
 
     try:
-        event = Event.objects.get(day=id)
+        event = Event.objects.filter(day=id)
     except Event.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        serializer = EventSerializer(event)
-        return Response(serializer.data)
+        event_bucket=[]
+        for i in event:
+            serializer=EventSerializer(i)
+            event_bucket.append(serializer.data)
+        return Response({'events':event_bucket})
 
 @api_view(['GET'])
 def event_list(request):
