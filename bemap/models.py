@@ -4,7 +4,8 @@ class Event(models.Model):
     name = models.CharField(max_length=20)
     description = models.CharField(max_length=500)
     room = models.CharField(max_length=10)
-    image = models.CharField(max_length=100)
+    image = models.ImageField(max_length=100)
+    day = models.CharField(max_length=5)
 
     def __str__(self):
         return self.name
